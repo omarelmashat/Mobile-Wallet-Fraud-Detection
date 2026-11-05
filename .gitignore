@@ -4,3 +4,5 @@ data/
 __pycache__/
 .venv-ml/
 .venv-test/
+.venv-notebook/
+.codex-presentation-build/

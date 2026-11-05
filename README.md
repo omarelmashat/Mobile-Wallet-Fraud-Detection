@@ -2,7 +2,11 @@
 
 A machine-learning demo that scores mobile-money transfers and cash-outs for fraud risk. It uses the simulated PaySim dataset and includes a Streamlit app for checking one transaction, scoring a CSV, and exploring the cost trade-off behind the review threshold.
 
-**Public demo:** Not deployed yet. The app has been run and checked locally.
+**Live demo:** [Open the Streamlit app](https://mobile-wallet-fraud-detection-mbiordzfbkmcdmrckrduoh.streamlit.app/)
+
+**Presentation:** [PDF](reports/presentation.pdf) · [PowerPoint](reports/presentation.pptx)
+
+**Repository:** [GitHub](https://github.com/omarelmashat/Mobile-Wallet-Fraud-Detection)
 
 ## Results
 
@@ -42,7 +46,19 @@ The sample upload file is `reports/sample_transactions.csv`.
 
 The model was trained on [PaySim Mobile Money Simulation](https://www.kaggle.com/datasets/ealaxi/paysim1). The data is simulated; no raw dataset is included in this repository. The Streamlit app uses the saved model and does not need the raw dataset to run.
 
-To rerun the notebook, download the dataset and place it at `data/raw/paysim.csv`. The first notebook cell currently points to a machine-specific absolute path, so update that line to the CSV's location on your computer before running it.
+To rerun the notebook, download the dataset and place it at `data/raw/paysim.csv`. The first cell now finds that file when the notebook is opened from either the project root or the `notebooks` folder. The raw data is ignored by Git because it is large; it is not needed to run the Streamlit app.
+
+Install the extra notebook tools in a Python 3.12 environment with:
+
+```bash
+python -m pip install -r requirements-notebook.txt
+```
+
+To execute every notebook cell and refresh its saved outputs:
+
+```bash
+python -m jupyter nbconvert --to notebook --execute --inplace notebooks/fraud_detection.ipynb
+```
 
 ## Project files
 
@@ -53,7 +69,10 @@ models/config.json                 Threshold and held-out test metrics
 models/cost_curve.csv              Out-of-fold training cost curve
 notebooks/fraud_detection.ipynb    Analysis and model development
 reports/sample_transactions.csv    Example CSV for the app
+reports/presentation.pdf           12-slide project presentation
+reports/presentation.pptx          Editable presentation deck
 requirements.txt                   Pinned app dependencies
+requirements-notebook.txt          Pinned notebook-only dependencies
 src/features.py                    Shared feature engineering
 ```
 
